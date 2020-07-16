@@ -18,7 +18,7 @@ class CreateMonitoriasTable extends Migration
             $table->string('materia');
             $table->string('monitor');
             $table->date('fecha');
-            $table->integer('salon');
+            $table->bigInteger('salon');
         });
     }
 

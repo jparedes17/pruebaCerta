@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Monitorias;
 use Illuminate\Http\Request;
+use App;
 
 class MonitoriasController extends Controller
 {
@@ -14,7 +15,9 @@ class MonitoriasController extends Controller
      */
     public function index()
     {
-        return view('monitorias');
+        
+        $monitorias = App\Monitorias::all();
+        return view('monitorias', compact('monitorias'));
     }
 
     /**
@@ -35,7 +38,21 @@ class MonitoriasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $monitoriasAgregar = new Monitorias();
+
+        $request->validate([
+            'materia' => 'required',
+            'monitor' => 'required',
+            'fecha' => 'required',
+            'salon' => 'required',
+        ]);
+
+        $monitoriasAgregar->materia = $request->materia;
+        $monitoriasAgregar->monitor = $request->monitor;
+        $monitoriasAgregar->fecha = $request->fecha;
+        $monitoriasAgregar->salon = $request->salon;
+        $monitoriasAgregar->save();
+        return back()->with('agregar', 'La monitoria se agrego correctamente');
     }
 
     /**
@@ -55,9 +72,10 @@ class MonitoriasController extends Controller
      * @param  \App\Monitorias  $monitorias
      * @return \Illuminate\Http\Response
      */
-    public function edit(Monitorias $monitorias)
+    public function edit($id)
     {
-        //
+        $monitoriaEditar = App\Monitorias::findOrFail($id);
+        return view('editar2', compact('monitoriaEditar'));
     }
 
     /**
@@ -67,9 +85,16 @@ class MonitoriasController extends Controller
      * @param  \App\Monitorias  $monitorias
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Monitorias $monitorias)
+    public function update(Request $request, $id)
     {
-        //
+
+        $monitoriasUpdate = App\Monitorias::findOrFail($id);
+        $monitoriasUpdate->materia = $request->materia;
+        $monitoriasUpdate->monitor = $request->monitor;
+        $monitoriasUpdate->fecha = $request->fecha;
+        $monitoriasUpdate->salon = $request->salon;
+        $monitoriasUpdate->save();
+        return back()->with('update2', 'La monitoria se ha actualizado correctamente');
     }
 
     /**
