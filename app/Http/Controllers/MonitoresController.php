@@ -38,6 +38,16 @@ class MonitoresController extends Controller
     public function store(Request $request)
     {
         $monitoresAgregar = new Monitores;
+
+        $request->validate([
+            'nombre' => 'required',
+            'apellido' => 'required',
+            'programaAcademico' => 'required',
+            'semestre' => 'required',
+            'cedula' => 'required',
+            'contacto' => 'required',
+        ]);
+
         $monitoresAgregar->nombre = $request->nombre;
         $monitoresAgregar->apellido = $request->apellido;
         $monitoresAgregar->programaAcademico = $request->programaAcademico;
@@ -65,9 +75,10 @@ class MonitoresController extends Controller
      * @param  \App\Monitores  $monitores
      * @return \Illuminate\Http\Response
      */
-    public function edit(Monitores $monitores)
+    public function edit($id)
     {
-        //
+        $monitorEditar = App\Monitores::findOrFail($id);
+        return view('editar', compact('monitorEditar'));
     }
 
     /**
@@ -77,9 +88,18 @@ class MonitoresController extends Controller
      * @param  \App\Monitores  $monitores
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Monitores $monitores)
+    public function update(Request $request, $id)
     {
-        //
+        $monitoresUpdate = App\Monitores::findOrFail($id);
+        $monitoresUpdate->nombre = $request->nombre;
+        $monitoresUpdate->apellido = $request->apellido;
+        $monitoresUpdate->programaAcademico = $request->programaAcademico;
+        $monitoresUpdate->semestre = $request->semestre;
+        $monitoresUpdate->cedula = $request->cedula;
+        $monitoresUpdate->contacto = $request->contacto;
+        $monitoresUpdate->save();
+        return back()->with('update', 'El monitor se ha actualizado correctamente');
+
     }
 
     /**

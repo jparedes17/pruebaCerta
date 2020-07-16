@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/Monitores', 'MonitoresController@index')->name('monitores');
 Route::get('/Monitorias', 'MonitoriasController@index')->name('monitorias');
 Route::get('/', 'PlantillaController@index')->name('plantilla');
+Route::get('/editar/{id}', 'MonitoresController@edit')->name('editar');
 
 Route::post('/agregar', 'MonitoresController@store')->name('store');
+
+Route::put('/update/{id}','MonitoresController@update')->name('update');
+
 

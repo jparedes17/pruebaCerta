@@ -12,6 +12,10 @@
         <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre" required style="align-content: center">
     </div>
 
+    @error('nombre')
+        swal('Hola mundo');
+    @enderror
+
     <div class="form-group">
         <input type="text" name="apellido" id="apellido" class="form-control" placeholder="Apellido" required>
     </div>
@@ -49,6 +53,7 @@
                 <th>Semestre</th>
                 <th>Cedula</th>
                 <th>Informacion de contacto</th>
+                <th>Editar/Eliminar</th>
             </tr>
             @foreach ($monitores as $moni)
                 <tr>
@@ -59,6 +64,9 @@
                 <td>{{$moni->semestre}}</td>
                 <td>{{$moni->cedula}}</td>
                 <td>{{$moni->contacto}}</td>
+                <td>
+                <a href="{{route('editar', $moni->id)}}" class="btn btn-warning">Editar</a>
+                </td>
                 </tr>
             @endforeach
         </table>
