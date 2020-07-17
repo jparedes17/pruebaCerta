@@ -2,11 +2,11 @@
 
 @section('contenido')
 
-<h3 class="text-center mb-3 pt-3">Editar el monitor {{$monitorEditar->id}}</h3>
+<h3 class="text-center mb-3 pt-3">Editar el monitor {{$monitorEditar->idMonitores}}</h3>
 <div class="row">
     <div class="col-md-2"></div>
       <div class="col-md-5">    
-      <form action="{{route('update', $monitorEditar->id)}}" method="POST">
+      <form action="{{route('update', $monitorEditar->idMonitores)}}" method="POST">
         @method('PUT')
  @csrf
 

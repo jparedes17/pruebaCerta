@@ -2,11 +2,11 @@
 
 @section('contenido')
 
-<h3 class="text-center mb-3 pt-3">Editar el monitor {{$monitoriaEditar->id}}</h3>
+<h3 class="text-center mb-3 pt-3">Editar el monitor {{$monitoriaEditar->idMonitorias}}</h3>
 <div class="row">
     <div class="col-md-2"></div>
       <div class="col-md-5">    
-      <form action="{{route('update2', $monitoriaEditar->id)}}" method="POST">
+      <form action="{{route('update2', $monitoriaEditar->idMonitorias)}}" method="POST">
         @method('PUT')
  @csrf
 
@@ -15,7 +15,12 @@
 </div>
 
 <div class="form-group">
-    <input type="text" name="monitor" id="monitor" class="form-control" value="{{$monitoriaEditar->monitor}}">
+    <select name="monitor" id="monitor" class="form-control" value="{{$monitoriaEditar->monitor}}">
+        <option value="">-- Escoja la categoria --</option>
+        @foreach ($monitores as $monitors)
+        <option value="{{$monitors['idMonitores']}}">{{$monitors['nombre']}} {{$monitors['apellido']}}</option>
+        @endforeach
+    </select>
 </div>
 
 <div class="form-group">

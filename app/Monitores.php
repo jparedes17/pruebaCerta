@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Monitores extends Model
 {
-    //
+    protected $primaryKey = 'idMonitores';
 }

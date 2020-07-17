@@ -55,7 +55,7 @@ class MonitoresController extends Controller
         $monitoresAgregar->cedula = $request->cedula;
         $monitoresAgregar->contacto = $request->contacto;
         $monitoresAgregar->save();
-        return back()->with('agregar', 'El monito se agrego correctamente');
+        return back()->with('agregar', 'El monitor se agrego correctamente');
     }
 
     /**
@@ -75,9 +75,9 @@ class MonitoresController extends Controller
      * @param  \App\Monitores  $monitores
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($idMonitores)
     {
-        $monitorEditar = App\Monitores::findOrFail($id);
+        $monitorEditar = App\Monitores::findOrFail($idMonitores);
         return view('editar', compact('monitorEditar'));
     }
 
@@ -88,9 +88,9 @@ class MonitoresController extends Controller
      * @param  \App\Monitores  $monitores
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $idMonitores)
     {
-        $monitoresUpdate = App\Monitores::findOrFail($id);
+        $monitoresUpdate = App\Monitores::findOrFail($idMonitores);
         $monitoresUpdate->nombre = $request->nombre;
         $monitoresUpdate->apellido = $request->apellido;
         $monitoresUpdate->programaAcademico = $request->programaAcademico;

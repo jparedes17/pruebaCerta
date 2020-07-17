@@ -14,7 +14,7 @@ class CreateMonitoresTable extends Migration
     public function up()
     {
         Schema::create('monitores', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('idMonitores');
             $table->string('nombre');
             $table->string('apellido');
             $table->string('programaAcademico');

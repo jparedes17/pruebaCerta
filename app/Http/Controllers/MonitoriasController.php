@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Monitorias;
 use Illuminate\Http\Request;
 use App;
+use App\Monitores;
 
 class MonitoriasController extends Controller
 {
@@ -27,7 +28,9 @@ class MonitoriasController extends Controller
      */
     public function create()
     {
-        //
+        $monitorias = App\Monitorias::all();
+        $monitores = App\Monitores::all();
+        return view('monitorias', compact('monitores', 'monitorias'));
     }
 
     /**
@@ -52,7 +55,7 @@ class MonitoriasController extends Controller
         $monitoriasAgregar->fecha = $request->fecha;
         $monitoriasAgregar->salon = $request->salon;
         $monitoriasAgregar->save();
-        return back()->with('agregar', 'La monitoria se agrego correctamente');
+        return back()->with('agregar2', 'La monitoria se agrego correctamente');
     }
 
     /**
@@ -72,10 +75,11 @@ class MonitoriasController extends Controller
      * @param  \App\Monitorias  $monitorias
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($idMonitorias)
     {
-        $monitoriaEditar = App\Monitorias::findOrFail($id);
-        return view('editar2', compact('monitoriaEditar'));
+        $monitores = App\Monitores::all();   
+        $monitoriaEditar = App\Monitorias::findOrFail($idMonitorias);
+        return view('editar2', compact('monitoriaEditar','monitores'));
     }
 
     /**
@@ -85,10 +89,10 @@ class MonitoriasController extends Controller
      * @param  \App\Monitorias  $monitorias
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $idMonitorias)
     {
 
-        $monitoriasUpdate = App\Monitorias::findOrFail($id);
+        $monitoriasUpdate = App\Monitorias::findOrFail($idMonitorias);
         $monitoriasUpdate->materia = $request->materia;
         $monitoriasUpdate->monitor = $request->monitor;
         $monitoriasUpdate->fecha = $request->fecha;
@@ -103,8 +107,11 @@ class MonitoriasController extends Controller
      * @param  \App\Monitorias  $monitorias
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Monitorias $monitorias)
+    public function destroy($idMonitorias)
     {
-        //
+        $monitoriasEliminar = App\Monitorias::findOrFail($idMonitorias);
+        $monitoriasEliminar->delete();
+        return back()->with('Eliminar', 'La monitoria ha sido eliminada correctamente');
+
     }
 }
