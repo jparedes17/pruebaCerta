@@ -22,8 +22,8 @@ Route::put('/update2/{idMonitorias}','MonitoriasController@update')->name('updat
 
 Route::delete('/eliminar/{idMonitorias}', 'MonitoriasController@destroy')->name('eliminar');
 
-// Rutas plantillas
-Route::get('/', 'PlantillaController@index')->name('plantilla');
+// Rutas Inicios
+Route::get('/', 'InicioController@index')->name('inicio');
 
 // Rutas Monitores
 Route::get('/Monitores', 'MonitoresController@index')->name('monitores');
@@ -31,5 +31,7 @@ Route::get('/editar/{idMonitores}', 'MonitoresController@edit')->name('editar');
 
 Route::post('/agregar', 'MonitoresController@store')->name('store');
 Route::put('/update/{idMonitores}','MonitoresController@update')->name('update');
+
+Route::delete('/eliminar2/{idMonitores}', 'MonitoresController@destroy')->name('eliminar2');
 
 

@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-5">
-        <h3 class="text-center mb-4">Agregar Monitores</h3>
+        <h3 class="text-center mb-4" style="font-family: 'Alegreya SC';font-size: 22px;">AGREGAR MONITORES</h3>
 
         <form action="{{route('store')}}" method="POST">
             @csrf
@@ -100,7 +100,12 @@
                 <td>{{$moni->cedula}}</td>
                 <td>{{$moni->contacto}}</td>
                 <td>
-                    <a href="{{route('editar', $moni->idMonitores)}}" class="btn btn-warning">Editar</a>
+                    <a href="{{route('editar', $moni->idMonitores)}}" class="btn btn-warning col-sm-6">Editar</a>
+                    <form action="{{route('eliminar2', $moni->idMonitores)}}" method="POST" class="d-inline col-sm-3">
+                        @method('DELETE')
+                        @csrf
+                        <button type="sumbit" class="btn btn-danger">Eliminar</button>
+                    </form>
                 </td>
             </tr>
             @endforeach

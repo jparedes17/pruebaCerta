@@ -4,7 +4,7 @@
     <div class="data-table-container">
         <div class="col-md-2"></div>
         <div class="col-md-5">
-            <h3 class="text-center mb-4">Agregar Monitorias</h3>
+            <h3 class="text-center mb-4" style = "font-family: 'Alegreya SC';font-size: 22px;">AGREGAR MONITORIAS</h3>
             <form action="{{route('store2')}}" method="POST">
                 @csrf
 
@@ -76,8 +76,8 @@
                     <td>{{$monit->fecha}}</td>
                     <td>{{$monit->salon}}</td>
                     <td>
-                        <a href="{{route('editar2', $monit->idMonitorias)}}" class="btn btn-warning ">Editar</a>
-                        <form action="{{route('eliminar', $monit->idMonitorias)}}" method="POST" class="d-inline">
+                        <a href="{{route('editar2', $monit->idMonitorias)}}" class="btn btn-warning col-sm-4">Editar</a>
+                        <form action="{{route('eliminar', $monit->idMonitorias)}}" method="POST" class="d-inline col-sm-3">
                             @method('DELETE')
                             @csrf
                             <button type="sumbit" class="btn btn-danger">Eliminar</button>

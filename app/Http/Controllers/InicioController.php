@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Plantilla;
+use App\Inicio;
 use Illuminate\Http\Request;
 
-class PlantillaController extends Controller
+class InicioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class PlantillaController extends Controller
      */
     public function index()
     {
-        //
+        return view('inicio');
     }
 
     /**
@@ -41,10 +41,10 @@ class PlantillaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Plantilla  $plantilla
+     * @param  \App\Inicio  $inicio
      * @return \Illuminate\Http\Response
      */
-    public function show(Plantilla $plantilla)
+    public function show(Inicio $inicio)
     {
         //
     }
@@ -52,10 +52,10 @@ class PlantillaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Plantilla  $plantilla
+     * @param  \App\Inicio  $inicio
      * @return \Illuminate\Http\Response
      */
-    public function edit(Plantilla $plantilla)
+    public function edit(Inicio $inicio)
     {
         //
     }
@@ -64,10 +64,10 @@ class PlantillaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Plantilla  $plantilla
+     * @param  \App\Inicio  $inicio
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Plantilla $plantilla)
+    public function update(Request $request, Inicio $inicio)
     {
         //
     }
@@ -75,10 +75,10 @@ class PlantillaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Plantilla  $plantilla
+     * @param  \App\Inicio  $inicio
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Plantilla $plantilla)
+    public function destroy(Inicio $inicio)
     {
         //
     }

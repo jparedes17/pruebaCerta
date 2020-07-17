@@ -108,8 +108,10 @@ class MonitoresController extends Controller
      * @param  \App\Monitores  $monitores
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Monitores $monitores)
+    public function destroy($idMonitores)
     {
-        //
+        $monitoriesEliminar = App\Monitores::findOrFail($idMonitores);
+        $monitoriesEliminar->delete();
+        return back()->with('Eliminar2', 'La monitoria ha sido eliminada correctamente');
     }
 }
