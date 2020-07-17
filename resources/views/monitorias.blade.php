@@ -4,13 +4,13 @@
     <div class="data-table-container">
         <div class="col-md-2"></div>
         <div class="col-md-5">
-            <h3 class="text-center mb-4" style = "font-family: 'Alegreya SC';font-size: 22px;">AGREGAR MONITORIAS</h3>
+            <h3 class="text-center mb-4" style="font-family: 'Alegreya SC';font-size: 22px;">AGREGAR MONITORIAS</h3>
             <form action="{{route('store2')}}" method="POST">
                 @csrf
 
                 <div class="form-group">
                     <input type="text" name="materia" id="materia" class="form-control" placeholder="Materia" required
-                        style="align-content: center">
+                        pattern="[a-z A-Z]+" maxlength="20" minlength="5">
                 </div>
                 @error('Materia')
                 <div class="alert alert-danger">
@@ -40,7 +40,8 @@
                 </div>
                 @enderror
                 <div class="form-group">
-                    <input type="number" name="salon" id="salon" class="form-control" placeholder="Salon" required>
+                    <input type="number" name="salon" id="salon" class="form-control" placeholder="Salon" required
+                        pattern="[0-9]+" maxlength="5" minlength="1">
                 </div>
                 @error('salon')
                 <div class="alert alert-danger">
@@ -77,7 +78,8 @@
                     <td>{{$monit->salon}}</td>
                     <td>
                         <a href="{{route('editar2', $monit->idMonitorias)}}" class="btn btn-warning col-sm-4">Editar</a>
-                        <form action="{{route('eliminar', $monit->idMonitorias)}}" method="POST" class="d-inline col-sm-3">
+                        <form action="{{route('eliminar', $monit->idMonitorias)}}" method="POST"
+                            class="d-inline col-sm-3">
                             @method('DELETE')
                             @csrf
                             <button type="sumbit" class="btn btn-danger">Eliminar</button>
@@ -86,12 +88,13 @@
                 </tr>
                 @endforeach
             </table>
+            {{$monitorias->links()}}
             @if (session('eliminar'))
             <div class="alert alert-success mt-3">
                 {{session('eliminar')}}
             </div>
             @endif
+        </div>
     </div>
-</div>
 </div>
 @endsection

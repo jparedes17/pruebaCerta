@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Bootstrap Example</title>
+  <title>Certa Prueba</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -42,6 +42,11 @@
       text-align: center;
       padding: 40px
     }
+
+    #logo{
+      display: block;
+      width: 30%;
+    }
   </style>
 </head>
 
@@ -55,7 +60,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="">Logo</a>
+        <img src="{{ asset('images/logo_certa.png') }}" alt="" id="logo">
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">

@@ -28,7 +28,8 @@ class MonitoriasController extends Controller
      */
     public function create()
     {
-        $monitorias = App\Monitorias::all();
+
+        $monitorias = App\Monitorias::paginate(3);
         $monitores = App\Monitores::all();
         return view('monitorias', compact('monitores', 'monitorias'));
     }

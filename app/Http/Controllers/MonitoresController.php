@@ -15,7 +15,7 @@ class MonitoresController extends Controller
      */
     public function index()
     {
-        $monitores = App\Monitores::all();
+        $monitores = App\Monitores::paginate(2);
         return view('monitores', compact('monitores'));
     }
 

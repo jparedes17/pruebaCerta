@@ -10,7 +10,7 @@
 
             <div class="form-group">
                 <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre" required
-                    style="align-content: center">
+                    pattern="[a-zA-Z]+" maxlength="10" minlength="3">
             </div>
 
             @error('nombre')
@@ -20,7 +20,8 @@
             @enderror
 
             <div class="form-group">
-                <input type="text" name="apellido" id="apellido" class="form-control" placeholder="Apellido" required>
+                <input type="text" name="apellido" id="apellido" class="form-control" placeholder="Apellido" required
+                    pattern="[a-zA-Z]+" maxlength="10" minlength="3">
             </div>
 
             @error('descripcion')
@@ -31,7 +32,7 @@
 
             <div class="form-group">
                 <input type="text" name="programaAcademico" id="programaAcademico" class="form-control"
-                    placeholder="Programa Academico" required>
+                    placeholder="Programa Academico" required pattern="[a-z A-Z]+" maxlength="20" minlength="3">
             </div>
 
             @error('programaAcademico')
@@ -41,7 +42,8 @@
             @enderror
 
             <div class="form-group">
-                <input type="number" name="semestre" id="semestre" class="form-control" placeholder="Semestre" required>
+                <input type="number" name="semestre" id="semestre" class="form-control" placeholder="Semestre" required
+                    pattern="[0-9]+" maxlength="2" minlength="1">
             </div>
 
             @error('semestre')
@@ -51,7 +53,8 @@
             @enderror
 
             <div class="form-group">
-                <input type="number" name="cedula" id="cedula" class="form-control" placeholder="Cedula" required>
+                <input type="number" name="cedula" id="cedula" class="form-control" placeholder="Cedula" required
+                    pattern="[0-9]+" maxlength="10" minlength="10">
             </div>
 
             @error('cedula')
@@ -62,7 +65,7 @@
 
             <div class="form-group">
                 <input type="number" name="contacto" id="contacto" class="form-control"
-                    placeholder="Informacion de Contacto" required>
+                    placeholder="Informacion de Contacto" required pattern="[0-9]+" maxlength="7" minlength="7">
             </div>
 
             @error('contacto')
@@ -72,6 +75,11 @@
             @enderror
 
             <button type="submit" class="btn btn-success btn-block" style="">Enviar</button>
+            @if (session('agregar'))
+            <div class="alert alert-success mt-3">
+                {{session('agregar')}}
+            </div>
+            @endif
         </form>
     </div>
 
@@ -110,14 +118,14 @@
             </tr>
             @endforeach
         </table>
+        {{$monitores->links()}}
+        @if (session('eliminar2'))
+        <div class="alert alert-success mt-3">
+            {{session('eliminar2')}}
+        </div>
+        @endif
     </div>
 </div>
-
-@if (session('agregar'))
-<div class="alert alert-success mt-3">
-    {{session('agregar')}}
-</div>
-@endif
 </div>
 </div>
 
